@@ -14,3 +14,11 @@
 
 4. Access http://localhost:3000
 
+### Some Contacts... ###
+Minnie Baldwin
+Alonzo Jones
+Maggie Luna
+Elisa Garza 
+Sophie Davidson
+Lawrence Hoffman
+Cary Ballard

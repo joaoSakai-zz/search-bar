@@ -1,0 +1,49 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.custom-search {
+    width: 100%;
+    border: 1px solid #01CCFF;
+    color: #22314C;
+    box-shadow: 1px 1px 3px #01CCFF;
+}
+
+.contacts-list-wrapper {
+   font-size: 2em;
+   margin-top: 25px;
+}
+
+#contactList {
+    width: 100%;
+    padding: 5px;
+    background: white;
+    color: #22314C;
+    border: 1px solid #22314C;
+    box-shadow: 1px 1px 3px #22314C;
+}
+
+.transferwise-logo {
+    width: 60%;
+    margin-bottom: 35px;
+    display: block;
+    margin: auto;
+}
+
+#contactList li {
+  list-style: none;
+  font-size: 0.7em;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.contact-modal-details {
+    width: 350px !important;
+    text-align: center;
+    font-size: 1em
+}

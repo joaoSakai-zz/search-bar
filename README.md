@@ -8,7 +8,7 @@
 
 ### How do I get set up? ###
 
-1. git clone repo;
+1. Clone the repo;
 2. Running Back-end APP  - Run command: 'mvn clean install spring-boot:run'
 3. Running Frond-end APP - Run command: 'cd webapp/searchbar/ && node start'
 

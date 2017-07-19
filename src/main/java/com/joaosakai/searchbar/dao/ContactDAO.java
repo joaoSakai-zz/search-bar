@@ -1,11 +1,11 @@
 package com.joaosakai.searchbar.dao;
 
+import com.joaosakai.searchbar.components.ElasticsearchComponent;
 import com.joaosakai.searchbar.model.Contact;
-import com.joaosakai.searchbar.global.ElasticsearchClient;
 import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.client.Client;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -18,10 +18,13 @@ import java.util.Map;
 @Repository
 public class ContactDAO {
 
-    public List<Contact> getContactsByName(final String contactName) {
-        Client elasticClient = ElasticsearchClient.getInstance().getClient();
+    private static final String CONTACTS_INDEX = "contacts";
 
-        SearchResponse response = elasticClient.prepareSearch("contacts")
+    @Autowired
+    private ElasticsearchComponent elasticsearchComponent;
+
+    public List<Contact> getContactsByName(final String contactName) {
+        SearchResponse response = elasticsearchComponent.getClient().prepareSearch(CONTACTS_INDEX)
                 .setQuery(QueryBuilders.matchPhrasePrefixQuery("name", contactName))
                 .setSize(100)
                 .get();
@@ -40,8 +43,7 @@ public class ContactDAO {
     }
 
     public List<Contact> getContacts() {
-        Client elasticClient = ElasticsearchClient.getInstance().getClient();
-        SearchResponse response = elasticClient.prepareSearch("contacts")
+        SearchResponse response = elasticsearchComponent.getClient().prepareSearch(CONTACTS_INDEX)
                 .setQuery(QueryBuilders.matchAllQuery())
                 .setSize(100)
                 .get();
@@ -62,8 +64,7 @@ public class ContactDAO {
 
     public Contact getContactByName(final String contactName) {
         final Contact contact = new Contact();
-        Client elasticClient = ElasticsearchClient.getInstance().getClient();
-        SearchResponse response = elasticClient.prepareSearch("contacts")
+        SearchResponse response = elasticsearchComponent.getClient().prepareSearch(CONTACTS_INDEX)
                 .setQuery(QueryBuilders.termQuery("_id", contactName))
                 .setSize(100)
                 .get();
